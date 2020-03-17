@@ -12,7 +12,7 @@ import javafx.scene.control.TextField;
 
 public class FXMLController {
 	
-	private Vocabolario voc = new Vocabolario();
+	private Vocabolario voc;
 
     @FXML
     private ResourceBundle resources;
@@ -56,5 +56,9 @@ public class FXMLController {
         assert txtRisultato != null : "fx:id=\"txtRisultato\" was not injected: check your FXML file 'Scene.fxml'.";
         assert btnClear != null : "fx:id=\"btnClear\" was not injected: check your FXML file 'Scene.fxml'.";
 
+    }
+    
+    public void setModel(Vocabolario model) {
+    	this.voc = model;
     }
 }

@@ -2,6 +2,8 @@ package it.polito.tdp.alien;
 
 import javafx.application.Application;
 import static javafx.application.Application.launch;
+
+import it.polito.tdp.alien.model.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -10,18 +12,34 @@ import javafx.stage.Stage;
 
 public class EntryPoint extends Application {
 
-    @Override
-    public void start(Stage stage) throws Exception {
+	@Override
+	public void start(Stage stage) throws Exception {
+		/*
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Scene.fxml"));
-        
+
         Scene scene = new Scene(root);
         scene.getStylesheets().add("/styles/Styles.css");
-        
+
         stage.setTitle("JavaFX and Maven");
         stage.setScene(scene);
         stage.show();
     }
+		 */
 
+		Vocabolario model = new Vocabolario();
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Scene.fxml"));
+
+		Parent root = loader.load();
+		Scene scene = new Scene(root);
+		scene.getStylesheets().add("/styles/Styles.css");
+
+		FXMLController controller = loader.getController();
+		controller.setModel(model);
+
+		stage.setTitle("Gli alieni sono tra noi!");
+		stage.setScene(scene);
+		stage.show();
+	}
     /**
      * The main() method is ignored in correctly deployed JavaFX application.
      * main() serves only as fallback in case the application can not be
